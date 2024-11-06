@@ -5,14 +5,9 @@ const DateRangeTab = () => {
   return (
     <section className="flex items-center gap-2">
       <TabButton
-        label="1h"
-        isActive={dateRangeTab === '1h'}
-        onClick={() => setDateRangeTab('1h')}
-      />
-      <TabButton
-        label="24h"
-        isActive={dateRangeTab === '24h'}
-        onClick={() => setDateRangeTab('24h')}
+        label="1d"
+        isActive={dateRangeTab === '1d'}
+        onClick={() => setDateRangeTab('1d')}
       />
       <TabButton
         label="1w"
@@ -24,20 +19,11 @@ const DateRangeTab = () => {
         isActive={dateRangeTab === '3m'}
         onClick={() => setDateRangeTab('3m')}
       />
-      <TabButton
-        label="6m"
-        isActive={dateRangeTab === '6m'}
-        onClick={() => setDateRangeTab('6m')}
-      />
+
       <TabButton
         label="1y"
         isActive={dateRangeTab === '1y'}
         onClick={() => setDateRangeTab('1y')}
-      />
-      <TabButton
-        label="all"
-        isActive={dateRangeTab === 'all'}
-        onClick={() => setDateRangeTab('all')}
       />
     </section>
   );

@@ -1,14 +1,22 @@
-// lib/services/crypto.ts
 import axios from 'axios';
+import { formatTimestamp } from '../utils/format-time';
+import {
+  CryptoMarketChartResponse,
+  CryptoPriceData,
+  CryptoPriceResponse,
+  PriceData,
+} from './crypto.type';
 
-const fetchCryptoPrice = async (symbol: string) => {
+export const fetchCryptoPrice = async (
+  symbol: string
+): Promise<CryptoPriceData> => {
   try {
-    const response = await axios.get(
+    const response = await axios.get<CryptoPriceResponse>(
       `https://api.coingecko.com/api/v3/simple/price?ids=${symbol.toLowerCase()}&vs_currencies=usd`
     );
     const price = response.data[symbol.toLowerCase()]?.usd || 0;
-    // فرض کنید تغییرات درصدی را محاسبه کنید یا از API دیگری بگیرید
-    const percentageChange = '▲ 6.64%'; // این مقدار باید از یک API دریافت شود
+
+    const percentageChange = '▲ 6.64%';
 
     return { price: `$${price.toLocaleString()}`, percentageChange };
   } catch (error) {
@@ -17,4 +25,15 @@ const fetchCryptoPrice = async (symbol: string) => {
   }
 };
 
-export default fetchCryptoPrice;
+export const fetchCryptoData = async (
+  currency: string,
+  days: number
+): Promise<PriceData[]> => {
+  const response = await axios.get<CryptoMarketChartResponse>(
+    `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=${currency}&days=${days}`
+  );
+  return response.data.prices.map(([timestamp, price]) => ({
+    timestamp: formatTimestamp(timestamp),
+    price,
+  }));
+};

@@ -6,7 +6,7 @@ import LineChartComponent from './line-chart';
 const CryptoChart = () => {
   const { activeTab } = useCryptoStore();
   return (
-    <section className="h-screen">
+    <section className="h-[800px]">
       {activeTab === 'Price' && <LineChartComponent />}
       {activeTab === 'TradingView' && <CandelChart />}
     </section>

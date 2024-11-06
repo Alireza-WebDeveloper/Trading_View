@@ -23,20 +23,20 @@ const CandleChart = () => {
 
       <AdvancedChart
         widgetProps={{
-          symbol: symbol, // نماد انتخابی
-          interval: '60', // بازه زمانی 1 ساعت
-          theme: 'dark', // تم تاریک
-          style: '1', // نوع نمودار (کندل)
-          locale: 'en', // زبان
-          toolbar_bg: '#000000', // رنگ پس‌زمینه نوار ابزار
-          allow_symbol_change: true, // اجازه تغییر نماد
-          hide_top_toolbar: false, // نمایش نوار ابزار بالای نمودار
-          withdateranges: true, // اجازه انتخاب تاریخ
-          height: '100%', // ارتفاع نمودار
-          width: '100%', // عرض نمودار
+          symbol: symbol,
+          interval: '60',
+          theme: 'dark',
+          style: '1',
+          locale: 'en',
+          toolbar_bg: '#000000',
+          allow_symbol_change: true,
+          hide_top_toolbar: false,
+          withdateranges: true,
+          height: '100%',
+          width: '100%',
         }}
         widgetPropsAny={{
-          autosize: true, // اندازه خودکار نمودار
+          autosize: true,
         }}
       />
     </div>
